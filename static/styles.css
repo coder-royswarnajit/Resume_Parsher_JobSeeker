@@ -1,63 +1,189 @@
+/* General body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #6dd5fa, #2980b9); /* Blue gradient background */
     margin: 0;
     padding: 0;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
     color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height for the viewport */
 }
 
-form {
+/* Shared container styles */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Page title styling */
+h1 {
+    font-size: 2.4rem;
+    color: #2a9d8f; /* Teal color */
     margin-bottom: 20px;
 }
 
-input[type="text"], input[type="file"], button {
+/* Index Page: Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+input[type="text"], input[type="file"] {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
-button {
+input[type="text"]:focus, input[type="file"]:focus {
+    border-color: #2a9d8f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+}
+
+.submit-button {
+    padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
+    font-size: 1rem;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
+.submit-button:hover {
     background-color: #45a049;
 }
 
-ul {
-    list-style-type: none;
-}
-
-li {
-    background-color: #fff;
-    padding: 15px;
-    margin: 10px 0;
+/* Results Page: Table wrapper */
+.table-wrapper {
+    max-height: 60vh; /* Limit the height */
+    overflow-y: auto; /* Vertical scroll bar */
+    border: 1px solid #ddd;
+    margin-top: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-a {
+/* Results Page: Job table */
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.job-table th, .job-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.job-table th {
+    background-color: #2a9d8f;
+    color: white;
+    position: sticky;
+    top: 0; /* Sticky header */
+    z-index: 1;
+}
+
+.job-table td {
+    background-color: #f9f9f9;
+    font-size: 1rem;
+}
+
+.job-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Sticky Apply column */
+.job-table th.sticky-column, .job-table td.sticky-column {
+    position: sticky;
+    right: 0;
+    background-color: white;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Apply button */
+.apply-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
     text-decoration: none;
-    color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-a:hover {
-    text-decoration: underline;
+.apply-button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    input[type="text"], input[type="file"] {
+        font-size: 0.9rem;
+    }
+
+    .job-table th, .job-table td {
+        font-size: 0.9rem;
+    }
+}
+/* Sticky Apply column */
+.job-table th.sticky-column {
+    position: sticky;
+    right: 0;
+    background-color: white;
+    text-align: center;
+    z-index: 2;
+    padding: 12px;
+    color: white;
+    background-color: #2a9d8f; /* Matches table header color */
+}
+
+.job-table td.sticky-column {
+    position: sticky;
+    right: 0;
+    background-color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Apply button */
+.apply-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #45a049;
 }
