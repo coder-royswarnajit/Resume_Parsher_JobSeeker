@@ -20,5 +20,85 @@
             <button type="submit" class="submit-button">Submit</button>
         </form>
     </div>
+    <div id="chatbot">
+        <div id="chatbox">
+            <div id="messages"></div>
+        </div>
+        <input type="text" id="user-input" placeholder="Type a message..." />
+        <button id="send-btn">Send</button>
+    </div>
+    
+    <script>
+        const sendButton = document.getElementById("send-btn");
+        const userInput = document.getElementById("user-input");
+        const messagesDiv = document.getElementById("messages");
+    
+        function addMessage(sender, text) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add(sender);
+            messageElement.textContent = text;
+            messagesDiv.appendChild(messageElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    
+        sendButton.addEventListener("click", async () => {
+            const userMessage = userInput.value.trim();
+            if (!userMessage) return;
+    
+            addMessage("user", userMessage);
+            userInput.value = "";
+    
+            const response = await fetch("/chatbot", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userMessage }),
+            });
+            const data = await response.json();
+    
+            addMessage("bot", data.response);
+        });
+    </script>
+    
+    <style>
+        #chatbot {
+            width: 300px;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+        }
+        #chatbox {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        #messages div {
+            margin: 5px 0;
+        }
+        .user {
+            text-align: right;
+            color: blue;
+        }
+        .bot {
+            text-align: left;
+            color: green;
+        }
+        #user-input {
+            width: 70%;
+            border: none;
+            padding: 5px;
+        }
+        #send-btn {
+            width: 25%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px;
+        }
+    </style>
+    
 </body>
 </html>

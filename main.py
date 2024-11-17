@@ -32,6 +32,7 @@ def extract_skills(resume_text):
     return resume_skills
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         name = request.form['name']
@@ -47,12 +48,33 @@ def index():
             return "Unsupported file format!", 400
 
         skills = extract_skills(resume_text)
+        
+        # Print skills to the server console
+        print(f"Strengths present in the resume: {name}: {skills}")
 
         matched_jobs = jobs_df[jobs_df['skills_desc'].str.contains('|'.join(skills), case=False, na=False)]
 
         return render_template('results.html', name=name, skills=skills, jobs=matched_jobs.to_dict(orient='records'))
 
     return render_template('index.html')
+
+@app.route('/chatbot', methods=['POST'])
+def chatbot():
+    user_message = request.json.get('message')
+    response = generate_chatbot_response(user_message)
+    return {'response': response}, 200
+
+def generate_chatbot_response(message):
+    # Basic responses for the chatbot
+    responses = {
+        "hello": "Hi there! How can I assist you today?",
+        "help": "I can help you upload your resume, find jobs, and answer questions about the platform.",
+        "jobs": "You can upload your resume to see the jobs that match your skills.",
+        "bye": "Goodbye! Have a great day!"
+    }
+    message = message.lower()
+    return responses.get(message, "I'm sorry, I didn't understand that. Could you please rephrase?")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
