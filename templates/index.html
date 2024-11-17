@@ -9,17 +9,15 @@
 <body>
     <div class="container">
         <h1>Welcome to Job Finder</h1>
-        <p>Find your dream job by uploading your resume and skills!</p>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="name">Your Name:</label>
-                <input type="text" name="name" id="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="resume">Upload Resume:</label>
-                <input type="file" name="resume" id="resume" accept=".txt,.pdf,.docx" required>
-            </div>
-            <button type="submit" class="submit-button">Find Jobs</button>
+        <p>Find jobs tailored to your skills by uploading your resume!</p>
+        <form method="POST" enctype="multipart/form-data" class="job-form">
+            <label for="name" class="form-label">Your Name:</label>
+            <input type="text" name="name" id="name" class="form-input" placeholder="Enter your name" required><br>
+
+            <label for="resume" class="form-label">Upload Resume:</label>
+            <input type="file" name="resume" id="resume" class="form-input" accept=".txt,.pdf,.docx" required><br>
+
+            <button type="submit" class="submit-button">Submit</button>
         </form>
     </div>
 </body>

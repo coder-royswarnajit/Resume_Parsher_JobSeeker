@@ -1,189 +1,136 @@
-/* General body styles */
+/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #6dd5fa, #2980b9); /* Blue gradient background */
+    font-family: Arial, sans-serif;
+    background-color: #f9f9fc;
     margin: 0;
     padding: 0;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Full height for the viewport */
 }
 
-/* Shared container styles */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Page title styling */
 h1 {
-    font-size: 2.4rem;
-    color: #2a9d8f; /* Teal color */
+    color: #2a73e8;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #333;
     margin-bottom: 20px;
 }
 
-/* Index Page: Form styles */
-form {
+p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.job-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    text-align: left;
+    align-items: center;
 }
 
-.form-group label {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    display: block;
-    color: #333;
+.form-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
 }
 
-input[type="text"], input[type="file"] {
-    width: 100%;
+.form-input {
+    width: 80%;
+    max-width: 500px;
     padding: 10px;
-    font-size: 1rem;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-input[type="text"]:focus, input[type="file"]:focus {
-    border-color: #2a9d8f;
-    outline: none;
-    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 .submit-button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #2a73e8;
     color: white;
-    font-size: 1rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
 }
 
 .submit-button:hover {
-    background-color: #45a049;
+    background-color: #1d5bbf;
+    transition: background-color 0.3s ease;
 }
 
-/* Results Page: Table wrapper */
+/* Table Styles */
 .table-wrapper {
-    max-height: 60vh; /* Limit the height */
-    overflow-y: auto; /* Vertical scroll bar */
+    max-height: 300px; /* Limit table height */
+    overflow-y: auto;
     border: 1px solid #ddd;
-    margin-top: 20px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
-/* Results Page: Job table */
-.job-table {
+table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.job-table th, .job-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
 }
 
-.job-table th {
-    background-color: #2a9d8f;
+table th {
+    background-color: #2a73e8;
     color: white;
     position: sticky;
-    top: 0; /* Sticky header */
+    top: 0;
     z-index: 1;
 }
 
-.job-table td {
+table tr:nth-child(even) {
     background-color: #f9f9f9;
-    font-size: 1rem;
 }
 
-.job-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Sticky Apply column */
-.job-table th.sticky-column, .job-table td.sticky-column {
-    position: sticky;
-    right: 0;
-    background-color: white;
-    text-align: center;
-    z-index: 2;
-}
-
-/* Apply button */
-.apply-button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+table tr:hover {
+    background-color: #e0f3ff;
     transition: background-color 0.3s ease;
 }
 
-.apply-button:hover {
-    background-color: #45a049;
-}
-
-/* Responsive styling */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    input[type="text"], input[type="file"] {
-        font-size: 0.9rem;
-    }
-
-    .job-table th, .job-table td {
-        font-size: 0.9rem;
-    }
-}
-/* Sticky Apply column */
-.job-table th.sticky-column {
-    position: sticky;
-    right: 0;
-    background-color: white;
-    text-align: center;
-    z-index: 2;
-    padding: 12px;
-    color: white;
-    background-color: #2a9d8f; /* Matches table header color */
-}
-
-.job-table td.sticky-column {
-    position: sticky;
-    right: 0;
-    background-color: white;
-    text-align: center;
-    z-index: 1;
-}
-
-/* Apply button */
 .apply-button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #2a73e8;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 4px;
+}
+
+.apply-button:hover {
+    background-color: #1d5bbf;
     transition: background-color 0.3s ease;
 }
 
-.apply-button:hover {
-    background-color: #45a049;
+/* Scrollbar Styles */
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }

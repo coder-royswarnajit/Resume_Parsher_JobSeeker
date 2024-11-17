@@ -8,32 +8,36 @@
 </head>
 <body>
     <div class="container">
-        <h1>Matching Jobs</h1>
-        <div class="table-wrapper">
-            <table class="job-table">
-                <thead>
-                    <tr>
-                        <th>Job Title</th>
-                        <th>Location</th>
-                        <th>Work Type</th>
-                        <th>Salary</th>
-                        <th class="sticky-column">Apply</th> <!-- Add "Apply" label -->
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for job in jobs %}
+        <h1>Hello {{ name }},</h1>
+        <h2>Here are jobs that match your skills: {{ skills | join(', ') }}</h2>
+
+        <div class="job-container">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
                         <tr>
+                            <th>#</th>
+                            <th>Job Title</th>
+                            <th>Location</th>
+                            <th>Work Type</th>
+                            <th>Salary</th>
+                            <th>Apply</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for job in jobs %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
                             <td>{{ job['title'] }}</td>
                             <td>{{ job['location'] }}</td>
                             <td>{{ job['work_type'] }}</td>
                             <td>${{ job['min_salary'] }} - ${{ job['max_salary'] }} {{ job['pay_period'] }}</td>
-                            <td class="sticky-column">
-                                <a href="{{ job['job_posting_url'] }}" target="_blank" class="apply-button">Apply</a>
-                            </td>
+                            <td><a href="{{ job['job_posting_url'] }}" target="_blank" class="apply-button">Apply</a></td>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
