@@ -49,7 +49,7 @@ def index():
 
         skills = extract_skills(resume_text)
         
-        # Print skills to the server console
+    
         print(f"Strengths present in the resume: {name}: {skills}")
 
         matched_jobs = jobs_df[jobs_df['skills_desc'].str.contains('|'.join(skills), case=False, na=False)]
@@ -65,7 +65,6 @@ def chatbot():
     return {'response': response}, 200
 
 def generate_chatbot_response(message):
-    # Basic responses for the chatbot
     responses = {
         "hello": "Hi there! How can I assist you today?",
         "help": "I can help you upload your resume, find jobs, and answer questions about the platform.",
